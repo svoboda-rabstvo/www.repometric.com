@@ -52,9 +52,7 @@ gulp.task('inject', ['favicons'], function() {
   var code = JSON.parse(faviconData).favicon.html_code;
   return gulp
     .src(path.index)
-    .pipe(inlinesource({
-      compress: true
-    }))
+    .pipe(favicon.injectFaviconMarkups(code))
     .pipe(inject(gulp.src([path.partials]), {
       starttag: '<!-- inject:{{path}} -->',
       relative: true,
@@ -62,7 +60,9 @@ gulp.task('inject', ['favicons'], function() {
         return file.contents.toString('utf8')
       }
     }))
-    .pipe(favicon.injectFaviconMarkups(code))
+    .pipe(inlinesource({
+      compress: true
+    }))
     .pipe(gulp.dest(path.dest));
 });
 
