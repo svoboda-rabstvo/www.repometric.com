@@ -22,7 +22,7 @@
 ### Inline
 > Scripts and Styles (except external) inlined using [gulp-inline-source](https://www.npmjs.com/package/gulp-inline-source).
 ### Inject
-> Parts of the page that areoptional for development injected using [gulp-inject](https://www.npmjs.com/package/gulp-inject) (Social Metainfo & Analytics).
+> Parts of the page that are optional for development injected using [gulp-inject](https://www.npmjs.com/package/gulp-inject) (Social Metainfo & Analytics).
 ### Travis
 > [Build, test and deploy](https://travis-ci.org/repometric/landing) all together using `.travis.yml` config. Every merge to `master` triggers build and deploy to `gh-pages` branch.
 
@@ -34,7 +34,7 @@
 ### Jekyll
 > [Completely bypass Jekyll processing](https://github.com/blog/572-bypassing-jekyll-on-github-pages) for GitHub pages with `.nojekyll` file.
 ### Cloudflare
-> `https` not available for custom domains at GithubPages, [moving DNS to Cloudflare](https://hackernoon.com/set-up-ssl-on-github-pages-with-custom-domains-for-free-a576bdf51bc) solved it.
+> `https` not available for custom domains at GitHub Pages, [moving DNS to Cloudflare](https://hackernoon.com/set-up-ssl-on-github-pages-with-custom-domains-for-free-a576bdf51bc) solved it
 ; in addition it allows to minify and compress traffic, cache it, provides CDN and many many more.
 
 ## Extra
@@ -43,6 +43,8 @@
 ### Yandex Metrica
 > The same with [Yandex Metrica](https://metrica.yandex.com).
 ### Open Graph
-> Page described as object using [Open Graph](http://ogp.me/), so the page has customized preview and description.
+> Page described as object using [Open Graph](http://ogp.me/), so it has customized preview and description.
 ### Twitter Cards
 > The same for [Twitter Cards](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/markup).
+### Structured Data
+> [Page described](http://schema.org/) as `organisation` in form of [JSON-LD](https://developers.google.com/search/docs/guides/intro-structured-data#structured-data-format).
