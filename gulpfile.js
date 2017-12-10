@@ -53,14 +53,14 @@ gulp.task('inject', ['favicons'], function() {
   return gulp
     .src(path.index)
     .pipe(inlinesource({
-      compress: true
+      compress: false
     }))
     .pipe(favicon.injectFaviconMarkups(code))
     .pipe(inject(gulp.src([path.partials]), {
       starttag: '<!-- inject:{{path}} -->',
       relative: true,
       transform: function (filePath, file) {
-        return file.contents.toString('utf8')
+        return file.contents.toString('utf8');
       }
     }))
     .pipe(gulp.dest(path.dest));

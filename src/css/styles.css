@@ -101,11 +101,6 @@ del {
 
 /* tables still need 'cellspacing="0"' in the markup */
 
-img,
-div {
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(…);
-}
-
 img {
     -ms-interpolation-mode: bicubic;
 }
@@ -146,7 +141,7 @@ input[type=email] {
 }
 
 input[type=email]:hover {
-    background-color: rgba(0, 0, 0) !important;
+    background-color: #000!important;
 }
 
 input[type=email]:active,
@@ -156,7 +151,6 @@ input[type=email]:focus {
 
 .hide-el {
     position: absolute;
-    font-style: 0;
     -webkit-transform: scaleX(0);
     -ms-transform: scaleX(0);
     -o-transform: scaleX(0);
@@ -217,7 +211,7 @@ input[type=email].subscribed {
 
 input[type=email].subscribed:hover {
     background-color: #22AA60;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 #000
     line-height: 20px;
     font-size: 14px;
 }
