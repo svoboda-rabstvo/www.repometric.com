@@ -111,6 +111,12 @@ img {
 
 /* Main CSS */
 
+/* HAck from ya */
+.invisible {
+    position: absolute;
+    left: -9999px;
+}
+
 .logo {
     width: 200px;
     height: auto;
