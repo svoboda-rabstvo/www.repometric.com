@@ -18,13 +18,16 @@
   },
   "homepage": "https://repometric.com",
   "devDependencies": {
+    "clean-css": "^4.1.9",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-inject": "^4.3.0",
     "gulp-inline-source": "^3.1.0",
     "gulp-real-favicon": "^0.2.2",
     "gulp-robots": "^2.0.4",
-    "gulp-sitemap": "^4.2.0"
+    "gulp-sitemap": "^4.2.0",
+    "uglify-js": "^3.2.1"
   },
   "scripts": {
     "build": "gulp"

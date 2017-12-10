@@ -6,6 +6,7 @@ var sitemap = require('gulp-sitemap');
 var robots = require('gulp-robots');
 var favicon = require('gulp-real-favicon');
 var inlinesource = require('gulp-inline-source');
+var htmlmin = require('gulp-htmlmin');
 
 // Common pathes
 var path = {
@@ -62,6 +63,13 @@ gulp.task('inject', ['favicons'], function() {
       transform: function (filePath, file) {
         return file.contents.toString('utf8');
       }
+    }))
+    .pipe(htmlmin({
+      collapseWhitespace: true,
+      removeComments: true,
+      removeCommentsFromCDATA: true,
+      minifyCSS: true,
+      minifyJS: true
     }))
     .pipe(gulp.dest(path.dest));
 });
