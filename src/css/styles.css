@@ -490,7 +490,7 @@ section>.row {
 
 @media (min-width: 768px) {
     body {
-        background: url('../images/background.jpg') no-repeat;
+        background: url('images/background.jpg') no-repeat;
         background-size: cover;
         background-attachment: fixed;
     }

@@ -52,6 +52,9 @@ gulp.task('inject', ['favicons'], function() {
   var code = JSON.parse(faviconData).favicon.html_code;
   return gulp
     .src(path.index)
+    .pipe(inlinesource({
+      compress: true
+    }))
     .pipe(favicon.injectFaviconMarkups(code))
     .pipe(inject(gulp.src([path.partials]), {
       starttag: '<!-- inject:{{path}} -->',
@@ -59,9 +62,6 @@ gulp.task('inject', ['favicons'], function() {
       transform: function (filePath, file) {
         return file.contents.toString('utf8')
       }
-    }))
-    .pipe(inlinesource({
-      compress: true
     }))
     .pipe(gulp.dest(path.dest));
 });
@@ -107,7 +107,6 @@ gulp.task('og', function() {
 
 // The default task (called when you run `gulp` from cli)
 gulp.task('default', [
-  'clean',
   'static',
   'favicons',
   'sitemap',
