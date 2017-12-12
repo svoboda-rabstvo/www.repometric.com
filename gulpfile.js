@@ -7,6 +7,7 @@ var robots = require('gulp-robots');
 var favicon = require('gulp-real-favicon');
 var inlinesource = require('gulp-inline-source');
 var htmlmin = require('gulp-htmlmin');
+var imagemin = require('gulp-imagemin');
 
 // Common pathes
 var path = {
@@ -20,10 +21,10 @@ var path = {
   gh: ['CNAME', '.nojekyll'],
   favicon: {
     description: './src/favicon/faviconDescription.json',
-    data: './src/favicon/faviconData.json'
+    data: './src/favicon/faviconData.json',
   },
   dest: './www',
-  url: 'https://repometric.com'
+  url: 'https://repometric.com',
 };
 
 // Clean output
@@ -54,7 +55,7 @@ gulp.task('inject', ['favicons'], function() {
   return gulp
     .src(path.index)
     .pipe(inlinesource({
-      compress: false
+      compress: false,
     }))
     .pipe(favicon.injectFaviconMarkups(code))
     .pipe(inject(gulp.src([path.partials]), {
@@ -62,14 +63,14 @@ gulp.task('inject', ['favicons'], function() {
       relative: true,
       transform: function (filePath, file) {
         return file.contents.toString('utf8');
-      }
+      },
     }))
     .pipe(htmlmin({
       collapseWhitespace: true,
       removeComments: true,
       removeCommentsFromCDATA: true,
       minifyCSS: true,
-      minifyJS: true
+      minifyJS: true,
     }))
     .pipe(gulp.dest(path.dest));
 });
@@ -78,7 +79,7 @@ gulp.task('inject', ['favicons'], function() {
 gulp.task('favicons', function(done) {
   var faviconDescription = JSON.parse(fs.readFileSync(path.favicon.description));
   faviconDescription.markupFile =  path.favicon.data;
-  faviconDescription.dest =  path.dest;  
+  faviconDescription.dest = path.dest;  
 	return favicon.generateFavicon(faviconDescription, function() {
 		done();
 	});
@@ -89,7 +90,7 @@ gulp.task('sitemap', function() {
   return gulp
     .src(path.index)
     .pipe(sitemap({
-      siteUrl: path.url
+      siteUrl: path.url,
     }))
     .pipe(gulp.dest(path.dest));;
 });
@@ -101,7 +102,7 @@ gulp.task('robots', function() {
     .pipe(robots({
       useragent: '*',
       allow: [],
-      disallow: []
+      disallow: [],
     }))
     .pipe(gulp.dest(path.dest));;
 });
@@ -113,13 +114,22 @@ gulp.task('og', function() {
     .pipe(gulp.dest(path.dest));
 });
 
+// Optimize images
+gulp.task('images', ['favicons', 'inject'], function() {
+  return gulp
+    .src(path.dest + '/**/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest(path.dest));
+});
+
 // The default task (called when you run `gulp` from cli)
-gulp.task('default', [
+gulp.task('default',  [
   'static',
   'favicons',
   'sitemap',
   'robots',
   'og',
   'gh',
-  'inject'
+  'inject',
+  'images',
 ]);
