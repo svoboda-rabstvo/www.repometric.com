@@ -15,4 +15,5 @@ deploy:
   on:
     branch: master
     target_branch: gh-pages
+    local-dir: build
     fqdn: repometric.com

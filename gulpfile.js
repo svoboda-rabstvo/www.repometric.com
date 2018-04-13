@@ -23,7 +23,7 @@ var path = {
     description: './src/favicon/faviconDescription.json',
     data: './src/favicon/faviconData.json',
   },
-  dest: './www',
+  dest: './build',
   url: 'https://repometric.com',
 };
 

@@ -1,5 +1,5 @@
 .idea
 src/assets/
 node_modules/
-www/
+build/
 src/favicon/faviconData.json
